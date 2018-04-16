@@ -4,10 +4,18 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const hbs = require('hbs');
 const expressHbs = require('express-handlebars');
+const config = require('./config/secret');
 
 
 const app = express();
 
+mongoose.connect(config.database, function(err){
+    if(err) 
+        console.log(err);
+    console.log("connected to the database");
+})
+
+//mongodb://<dbuser>:<dbpassword>@ds153494.mlab.com:53494/deeptwitter
 
 app.engine('.hbs', expressHbs({ defaultLayout: 'layout', extname: '.hbs'}));
 app.set('view engine', 'hbs');
