@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.schema;
+const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
     email: {type: String, unique: true, lowercase: true},
@@ -7,7 +7,7 @@ const UserSchema = new Schema({
     password: String,
     photo: String,
     tweets: [{
-        tweet: {type: Schema.types.ObjectId, ref: 'Tweet'}
+        tweet: {type: Schema.Types.ObjectId, ref: 'Tweet'}
     }]
 });
 module.exports = mongoose.model('User', UserSchema);
