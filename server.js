@@ -34,8 +34,12 @@ app.use(session({
 app.use(flash());
 
 const mainRoutes = require('./routes/main');
+const userRoutes = require('./routes/user');
+
 
 app.use(mainRoutes);
+app.use(userRoutes);
+
 
 app.listen(3030, (err)=> {
     if(err) console.log(err);
