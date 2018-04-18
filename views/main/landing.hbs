@@ -7,7 +7,9 @@
 
       <div class="col-md-4 m-auto">
             <a href="/signup" class="btn btn-primary btn-lg">Signup</a>
-            <a href="/signin" class="btn btn-primary btn-lg">Signin</a>
+            {{#unless user}}
+            <a href="/login" class="btn btn-primary btn-lg">Login</a>
+            {{/unless}}
       </div>
 
 </main>
