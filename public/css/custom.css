@@ -1,0 +1,14 @@
+.nav-right{
+    position: absolute; 
+    right:10px;
+  }
+  .navbar-right a{
+    text-decoration: none !important;
+    color: #fff;
+    font-size: 1rem;
+    margin-right: 4px;
+    box-sizing: border-box;
+  }
+.media-object{
+    width: 40px;
+}
