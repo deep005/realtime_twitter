@@ -12,6 +12,8 @@ const passport = require('passport');
 const cookieParser  = require('cookie-parser');
 
 const app = express();
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
 
 mongoose.connect(config.database, function(err){
     if(err) 
@@ -40,7 +42,9 @@ app.use(passport.session());
 app.use(function(req, res, next){
     res.locals.user = req.user;
     next();
-})
+});
+
+require('./realtime/io')(io);
 
 const mainRoutes = require('./routes/main');
 const userRoutes = require('./routes/user');
@@ -50,7 +54,7 @@ app.use(mainRoutes);
 app.use(userRoutes);
 
 
-app.listen(3030, (err)=> {
+http.listen(3030, (err)=> {
     if(err) console.log(err);
     console.log(`Running on port ${3030}`);
 });
